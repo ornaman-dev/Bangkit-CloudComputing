@@ -1,6 +1,5 @@
 /img
 # ayitest
-requirements.txt
 requirements-dev.txt
 # Byte-compiled / optimized / DLL files
 __pycache__/
