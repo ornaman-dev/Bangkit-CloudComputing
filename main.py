@@ -6,7 +6,21 @@ import uvicorn
 from PIL import Image
 from io import BytesIO
 
-app = FastAPI()
+app = FastAPI(
+    title="Ornaman REST API documentation",
+    description="This API was built to classification ornamental plant by images and recommendations (machine learning plant identification service)",
+    version="1.0.0",
+    servers=[
+        {
+            "url": "http://localhost:8000",
+            "description": "Development Server"
+        },
+        {
+            "url": "http://127.0.0.1:8000/",
+            "description": "Another url alternatives",
+        }
+    ],
+)
 
 MODEL = tf.keras.models.load_model("models/")
 CLASS_NAMES = ['Agglonema', 'Alocasia', 'Gelombang Cinta', 'Janda Bolong', 'Lidah Mertua', 'Lili Paris', 'Pucuk Merah', 'Suplir']
