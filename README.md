@@ -1,5 +1,6 @@
 # Bangkit-CloudComputing
 ## API Klasifikasi Tanaman Hias
-| Method | Path | Type | Response |
+| Method | Path | Parameter | Response |
 | :--- | :--- | :--- | :--- |
-| `GET` | /ping | `string` | "The server is running."|
+| `GET` | /ping | none | "The server is running." |
+| `POST` | /predict | image: `file` | { <br/> &emsp;"class" : `string`, <br/> &emsp;"description" : `string`, <br/> &emsp;"confidence" : `float` <br/> } |
