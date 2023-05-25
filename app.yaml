@@ -1,0 +1,28 @@
+# runtime: python311
+# instance_class: F4_1G
+# # # entrypoint: gunicorn -b :$PORT -w 8 main:app
+# entrypoint: gunicorn -w 8 -k uvicorn.workers.UvicornWorker main:app
+
+# runtime: python
+# env: flex
+# entrypoint: gunicorn -b :$PORT main:app
+# instance_class: B4_1G
+# runtime_config:
+#   operating_system: "ubuntu22"
+#   runtime_version: "3.11"
+# manual_scaling:
+#   instances: 2
+
+
+
+# runtime: python
+# env: flex
+# entrypoint: gunicorn -b :$PORT main:app
+# runtime_config:
+#   operating_system: ubuntu22
+# manual_scaling:
+#   instances: 1
+# resources:
+#   cpu: 1
+#   memory_gb: 0.5
+#   disk_size_gb: 10

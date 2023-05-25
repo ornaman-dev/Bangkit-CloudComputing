@@ -1,0 +1,10 @@
+scikit-learn
+keras-utils
+fastapi
+gunicorn
+tensorflow
+numpy
+uvicorn
+pillow
+requires.io
+python-multipart
