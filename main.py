@@ -16,8 +16,8 @@ app = FastAPI(
             "description": "Development Server"
         },
         {
-            "url": "http://127.0.0.1:8000/",
-            "description": "Another url alternatives",
+            "url": "https://classification-api-rf6r3bwska-et.a.run.app/",
+            "description": "Production Server",
         }
     ],
 )
