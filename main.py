@@ -58,7 +58,13 @@ async def predict(
 ):
     img = read_image(await image.read())
 
-    predictions = MODEL.predict(img)
+    try:
+        predictions = MODEL.predict(img)
+    except:
+        return {
+            "detail": "There was an error when load the image"
+        }
+    
     predicted_idx = np.argmax(predictions[0])
 
     class_name = CLASS_NAMES[predicted_idx]
