@@ -5,7 +5,7 @@
 | Method | Path | Parameter | Response |
 | :--- | :--- | :--- | :--- |
 | `GET` | /ping | none | "The server is running." |
-| `POST` | /predict | image: `file` | { <br/> &emsp;"class" : `string`, <br/> &emsp;"description" : `string`, <br/> &emsp;"confidence" : `float` <br/> } |
+| `POST` | /predict | file: `file` | { <br/> &emsp;"class" : `string`, <br/> &emsp;"description" : `string`, <br/> &emsp;"confidence" : `float` <br/> &emsp;"image" : `string` <br/> } |
 
 ### Postman Example
-![image](https://github.com/ornaman-dev/Bangkit-CloudComputing/assets/73805258/810afc0f-5918-49b1-81be-9b541bc28cf4)
+![image](https://github.com/ornaman-dev/Bangkit-CloudComputing/assets/73805258/8ab10089-3c64-4618-8b9e-4558be901ec3)
