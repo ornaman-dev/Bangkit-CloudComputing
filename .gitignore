@@ -1,4 +1,8 @@
+# rosyanignore
 /img
+/model
+credentials.json
+main_dump.py
 # ayitest
 requirements-dev.txt
 # Byte-compiled / optimized / DLL files

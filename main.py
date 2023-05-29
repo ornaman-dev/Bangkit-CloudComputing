@@ -1,10 +1,16 @@
 from fastapi import FastAPI, File, UploadFile
+from gcloud import storage
+from io import BytesIO
+from PIL import Image
+
 import keras.utils as image
 import tensorflow as tf
 import numpy as np
+
+import requests
 import uvicorn
-from PIL import Image
-from io import BytesIO
+import uuid
+import os
 
 app = FastAPI(
     title="Ornaman REST API documentation",
@@ -39,8 +45,30 @@ CLASS_DESC = [
 async def ping():
     return "The server is running."
 
-def read_image(data) -> np.ndarray:
-    img = Image.open(BytesIO(data))
+def upload_image(data):
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'credentials.json'
+    client = storage.Client()
+    file = os.path.splitext(data.filename)
+    
+    bucket = client.get_bucket('plant-classification-images')
+
+    img_type = data.filename.split(".")[-1]
+    if(img_type == 'jpg'):
+        img_type = 'jpeg'
+
+    blob = bucket.blob('plant-' + str(uuid.uuid4())[:8] + file[1])
+    blob.upload_from_file(data.file)
+    blob.content_type = 'image/' + img_type
+    blob.patch()
+
+    img_url = blob.public_url
+
+    return img_url
+
+def read_image(data):
+    response = requests.get(data)
+    img = Image.open(BytesIO(response.content))
+
     imgResize = img.resize((150, 150))
     imgArr = np.array(imgResize)
 
@@ -54,9 +82,10 @@ def read_image(data) -> np.ndarray:
 
 @app.post("/predict")
 async def predict(
-    image: UploadFile = File(...)
+    file: UploadFile = File(...)
 ):
-    img = read_image(await image.read())
+    img_url = upload_image(file)
+    img = read_image(img_url)
 
     try:
         predictions = MODEL.predict(img)
@@ -74,7 +103,8 @@ async def predict(
     return {
         'class': class_name,
         'description': class_desc,
-        'confidence': float(confidence)
+        'confidence': float(confidence),
+        'image': img_url
     }
 
 @app.get("/")
