@@ -10,3 +10,4 @@ requires.io
 python-multipart
 gcloud
 uuid
+efficientnet
