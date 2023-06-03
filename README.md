@@ -1,5 +1,8 @@
-# Bangkit-CloudComputing ☁ 
+# Bangkit-CloudComputing
+## API Plant Recommendation
 
-| Code 💻  | Wiki 📝 |
-|----------|------|
-| [ClassificationAPI](https://github.com/ornaman-dev/Bangkit-CloudComputing/tree/ClassificationAPI) | [Bangkit-CloudComputing Wiki](https://github.com/ornaman-dev/Bangkit-CloudComputing/wiki) |
+<b>Not yet</b> finished<br>
+TODO:
+- Implementing API
+- Deploy to Google Cloud
+- Recommend logic revision
