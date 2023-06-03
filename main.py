@@ -1,3 +1,4 @@
+from efficientnet.tfkeras import EfficientNetB3
 from fastapi import FastAPI, File, UploadFile
 from gcloud import storage
 from io import BytesIO
@@ -28,7 +29,7 @@ app = FastAPI(
     ],
 )
 
-MODEL = tf.keras.models.load_model("models/")
+MODEL = tf.keras.models.load_model("models/model_EfficientNetB3.h5")
 CLASS_NAMES = ['Agglonema', 'Alocasia', 'Gelombang Cinta', 'Janda Bolong', 'Lidah Mertua', 'Lili Paris', 'Pucuk Merah', 'Suplir']
 CLASS_DESC = [
     'Agglonema adalah tanaman hias populer dari suku talas-talasan atau Araceae. Genus Aglaonema memiliki sekitar 30 spesies. Mereka berasal dari daerah tropis dan subtropis di Asia dan Nugini. Mereka umumnya dikenal sebagai Chinese evergreens.',
