@@ -31,9 +31,9 @@ DROP TABLE IF EXISTS `favorite`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `favorite` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `post_id` int NOT NULL,
+  `id` varchar(15) NOT NULL,
+  `user_id` varchar(15) NOT NULL,
+  `post_id` varchar(15) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `favorite_user_id_foreign` (`user_id`),
   KEY `favorite_post_id_foreign` (`post_id`),
@@ -48,7 +48,7 @@ CREATE TABLE `favorite` (
 
 LOCK TABLES `favorite` WRITE;
 /*!40000 ALTER TABLE `favorite` DISABLE KEYS */;
-INSERT INTO `favorite` VALUES (1,1,1),(2,2,3),(3,1,3),(4,3,2);
+INSERT INTO `favorite` VALUES ('fav-955c67','user-97e049','post-e99636'),('fav-5f1216','user-f24f39','post-111d59'),('fav-002ca7','user-97e049','post-111d59'),('fav-08050b','user-9b5b67','post-f1fd80');
 /*!40000 ALTER TABLE `favorite` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -60,7 +60,7 @@ DROP TABLE IF EXISTS `plants`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `plants` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` varchar(15) NOT NULL,
   `name` varchar(255) NOT NULL,
   `desc` varchar(555) NOT NULL,
   PRIMARY KEY (`id`)
@@ -73,7 +73,7 @@ CREATE TABLE `plants` (
 
 LOCK TABLES `plants` WRITE;
 /*!40000 ALTER TABLE `plants` DISABLE KEYS */;
-INSERT INTO `plants` VALUES (1,'Agglonema','Agglonema adalah tanaman hias populer dari suku talas-talasan atau Araceae. Genus Aglaonema memiliki sekitar 30 spesies. Mereka berasal dari daerah tropis dan subtropis di Asia dan Nugini. Mereka umumnya dikenal sebagai Chinese evergreens.'),(2,'Alocasia','Kuping gajah (Alocasia) adalah spesies hibrida antara Alocasia longiloba dan Alocasia sanderiana. Alocasia dikenal karena daunnya yang besar dan beragam kultivar dalam spesiesnya. Kuping Gajah berasal dari Asia tropis dan Australia.'),(3,'Gelombang Cinta','Gelombang cinta (Anthurium plowmanii) adalah contoh keserbagunaan. Di habitat aslinya, tanaman tropis dengan dedaunan besar yang menarik ini tumbuh sebagai epifit, paling sering menempel pada pohon. Namun karena ukuran dan berat dedaunannya, ia dapat jatuh ke tanah dan terus tumbuh sebagai tanaman terestrial. Julukan spesifik dari nama Latin, plowmanii, diberikan untuk menghormati ahli etnobotani abad ke-20 yang meninggal secara tragis, Timothy Plowman.'),(4,'Janda Bolong','Janda bolong (Monstera obliqua) adalah spesies tumbuhan asli Amerika Tengah dan Selatan. Monstera obliqua dinamai untuk lubang di daunnya. Spesies ini dianggap mahal untuk dibudidayakan dan juga dianggap sebagai spesies tanaman hias yang langka. Tanaman ini memiliki daun yang khas, yaitu terdapat bolong-bolong di tengah daunnya.'),(5,'Lidah Mertua','Lidah mertua (Sansevieria) dapat dianggap sebagai tanaman hias dan pajangan arsitektural karena daunnya yang seperti pedang dengan pola garis tebal, yang khas dan menarik perhatian. Lidah mertua adalah marga tanaman hias yang cukup populer sebagai penghias bagian dalam rumah karena tanaman ini dapat tumbuh dalam kondisi yang sedikit air dan cahaya matahari. Namun, berhati-hatilah dengan tanaman ini karena beracun jika tertelan dan dapat menyebabkan mual, muntah, bahkan pembengkakan tenggorokan dan lidah.'),(6,'Lili Paris','Lili paris (Chlorophytum comosum) adalah tanaman abadi hijau dengan daun tipis panjang yang memberinya nama lain, \"tanaman pita\". Tanaman ini telah menyebar jauh dari Afrika asalnya karena mudah dirawat. Karena tanaman Lili paris tumbuh dengan baik di tempat teduh sebagian atau penuh, mereka menjadi tanaman hias yang populer.'),(7,'Pucuk Merah','Pucuk merah (Syzygium myrtifolium) adalah spesies tumbuhan yang dikenal sebagai tanaman hias yang berasal dari genus Syzygium. Warna tunas daun yang baru muncul memiliki warna merah menyala sehingga tumbuhan ini memiliki sebutan Pucuk Merah. Warna daun akan berubah perlahan menjadi hijau seiring berjalannya waktu. Pucuk merah adalah sejenis tanaman perdu yang biasanya dijadikan tanaman hias di pekarangan rumah, perkantoran dan sebagainya serta masih termasuk ke dalam family yang sama dengan tanaman cengkih.'),(8,'Suplir','Suplir  (Adiantum formosum) berasal dari Australia dan Selandia Baru dan ditemukan di hutan hujan, aliran air, dan ngarai. Meskipun dedaunannya terlihat halus, tanaman ini adalah tanaman yang keras dan mudah tumbuh, dengan air yang cukup. Tumbuh perlahan dan tidak suka dipindahkan begitu sudah mapan.');
+INSERT INTO `plants` VALUES ('plant-a644c9','Agglonema','Agglonema adalah tanaman hias populer dari suku talas-talasan atau Araceae. Genus Aglaonema memiliki sekitar 30 spesies. Mereka berasal dari daerah tropis dan subtropis di Asia dan Nugini. Mereka umumnya dikenal sebagai Chinese evergreens.'),('plant-5ee69c','Alocasia','Kuping gajah (Alocasia) adalah spesies hibrida antara Alocasia longiloba dan Alocasia sanderiana. Alocasia dikenal karena daunnya yang besar dan beragam kultivar dalam spesiesnya. Kuping Gajah berasal dari Asia tropis dan Australia.'),('plant-6dad53','Gelombang Cinta','Gelombang cinta (Anthurium plowmanii) adalah contoh keserbagunaan. Di habitat aslinya, tanaman tropis dengan dedaunan besar yang menarik ini tumbuh sebagai epifit, paling sering menempel pada pohon. Namun karena ukuran dan berat dedaunannya, ia dapat jatuh ke tanah dan terus tumbuh sebagai tanaman terestrial. Julukan spesifik dari nama Latin, plowmanii, diberikan untuk menghormati ahli etnobotani abad ke-20 yang meninggal secara tragis, Timothy Plowman.'),('plant-903512','Janda Bolong','Janda bolong (Monstera obliqua) adalah spesies tumbuhan asli Amerika Tengah dan Selatan. Monstera obliqua dinamai untuk lubang di daunnya. Spesies ini dianggap mahal untuk dibudidayakan dan juga dianggap sebagai spesies tanaman hias yang langka. Tanaman ini memiliki daun yang khas, yaitu terdapat bolong-bolong di tengah daunnya.'),('plant-5dcc15','Lidah Mertua','Lidah mertua (Sansevieria) dapat dianggap sebagai tanaman hias dan pajangan arsitektural karena daunnya yang seperti pedang dengan pola garis tebal, yang khas dan menarik perhatian. Lidah mertua adalah marga tanaman hias yang cukup populer sebagai penghias bagian dalam rumah karena tanaman ini dapat tumbuh dalam kondisi yang sedikit air dan cahaya matahari. Namun, berhati-hatilah dengan tanaman ini karena beracun jika tertelan dan dapat menyebabkan mual, muntah, bahkan pembengkakan tenggorokan dan lidah.'),('plant-973e5d','Lili Paris','Lili paris (Chlorophytum comosum) adalah tanaman abadi hijau dengan daun tipis panjang yang memberinya nama lain, \"tanaman pita\". Tanaman ini telah menyebar jauh dari Afrika asalnya karena mudah dirawat. Karena tanaman Lili paris tumbuh dengan baik di tempat teduh sebagian atau penuh, mereka menjadi tanaman hias yang populer.'),('plant-98e6b4','Pucuk Merah','Pucuk merah (Syzygium myrtifolium) adalah spesies tumbuhan yang dikenal sebagai tanaman hias yang berasal dari genus Syzygium. Warna tunas daun yang baru muncul memiliki warna merah menyala sehingga tumbuhan ini memiliki sebutan Pucuk Merah. Warna daun akan berubah perlahan menjadi hijau seiring berjalannya waktu. Pucuk merah adalah sejenis tanaman perdu yang biasanya dijadikan tanaman hias di pekarangan rumah, perkantoran dan sebagainya serta masih termasuk ke dalam family yang sama dengan tanaman cengkih.'),('plant-460f60','Suplir','Suplir  (Adiantum formosum) berasal dari Australia dan Selandia Baru dan ditemukan di hutan hujan, aliran air, dan ngarai. Meskipun dedaunannya terlihat halus, tanaman ini adalah tanaman yang keras dan mudah tumbuh, dengan air yang cukup. Tumbuh perlahan dan tidak suka dipindahkan begitu sudah mapan.');
 /*!40000 ALTER TABLE `plants` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,9 +85,9 @@ DROP TABLE IF EXISTS `posts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `posts` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int NOT NULL,
-  `plant_id` int NOT NULL,
+  `id` varchar(15) NOT NULL,
+  `user_id` varchar(15) NOT NULL,
+  `plant_id` varchar(15) NOT NULL,
   `image` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `posts_user_id_foreign` (`user_id`),
@@ -103,7 +103,15 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,2,1,'https://storage.googleapis.com/plant-classification-images/plant-382e6ee7.jpg'),(2,1,8,'https://storage.googleapis.com/plant-classification-images/plant-9b05408d.jpg'),(3,3,2,'https://storage.googleapis.com/plant-classification-images/plant-f3dd819c.jpg');
+INSERT INTO `posts` VALUES 
+('post-e99636','user-f24f39','plant-a644c9','https://storage.googleapis.com/plant-classification-images/plant-382e6ee7.jpg'),
+('post-f1fd80','user-97e049','plant-460f60','https://storage.googleapis.com/plant-classification-images/plant-9b05408d.jpg'),
+('post-111d59','user-9b5b67','plant-5ee69c','https://storage.googleapis.com/plant-classification-images/plant-f3dd819c.jpg'),
+('post-ccd905','user-fb8496','plant-98e6b4','https://storage.googleapis.com/plant-classification-images/plant-9dc1f90d.jpg'),
+('post-12f6c8','user-c51d80','plant-973e5d','https://storage.googleapis.com/plant-classification-images/plant-20f7a443.jpeg'),
+('post-6fe13d','user-fb8496','plant-903512','https://storage.googleapis.com/plant-classification-images/plant-70bfb76a.jpg'),
+('post-9c7c27','user-9b5b67','plant-6dad53','https://storage.googleapis.com/plant-classification-images/plant-c1bf6dff.jpg'),
+('post-8367db','user-9b5b67','plant-5dcc15','https://storage.googleapis.com/plant-classification-images/plant-a91a05c8.jpeg');
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +123,7 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` varchar(15) NOT NULL,
   `user_name` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
@@ -127,7 +135,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John'),(2,'Bob'),(3,'Sully');
+INSERT INTO `users` VALUES ('user-97e049','John'),('user-f24f39','Bob'),('user-9b5b67','Sully'),('user-fb8496','Chris'),('user-c51d80','Stephen');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

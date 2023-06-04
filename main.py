@@ -2,8 +2,16 @@ import pandas as pd
 import mysql.connector
 import random
 import json
+import uuid
+import uvicorn
 
 from sklearn.metrics.pairwise import cosine_similarity
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+class Item(BaseModel):
+    user_id: str
+    post_id: str
 
 dbAuth = json.load(open('db_auth.json'))
 mydb = mysql.connector.connect(
@@ -13,6 +21,21 @@ mydb = mysql.connector.connect(
         database=dbAuth['db_name']
     )
 cursor = mydb.cursor( dictionary=True )
+
+app = FastAPI()
+
+def create_favorite(user_id, post_id):
+    fav_id = 'fav-' + str(uuid.uuid4())[:6]
+    query = (f"INSERT INTO `favorite` VALUES ('{fav_id}', '{user_id}', '{post_id}');")
+
+    cursor.execute(query)
+    mydb.commit()
+
+def delete_favorite(user_id, post_id):
+    query = (f"DELETE FROM favorite WHERE user_id = '{user_id}' AND post_id = '{post_id}';")
+
+    cursor.execute(query)
+    mydb.commit()
 
 def recommend_plant(user_favorites):
     df = pd.read_csv('books/Clean_Dataset.csv')
@@ -82,8 +105,8 @@ def recommend_plant(user_favorites):
     
     return ranked_item_score['Plant'].values
 
-def get_user_fav(user_id):
-    query = (f"SELECT plants.name AS tanaman FROM posts INNER JOIN plants ON plants.id = posts.plant_id INNER JOIN favorite ON favorite.post_id = posts.id INNER JOIN users ON favorite.user_id = users.id WHERE users.id = {user_id};")
+def get_user_fav(user_id, post_id):
+    query = (f"SELECT plants.name AS tanaman FROM posts INNER JOIN plants ON plants.id = posts.plant_id INNER JOIN favorite ON favorite.post_id = posts.id INNER JOIN users ON favorite.user_id = users.id WHERE users.id = '{user_id}' OR posts.id = '{post_id}';")
 
     cursor.execute(query)
     frame = cursor.fetchall()
@@ -94,17 +117,36 @@ def get_user_fav(user_id):
 
     return fav_plants
 
-def get_posts(myfav):
+def get_posts(myfav, user_id):
     myfav_t = tuple(myfav)
-    query = ("SELECT posts.id, plants.name, posts.image, plants.desc FROM posts INNER JOIN plants ON posts.plant_id = plants.id WHERE plants.name IN {}".format(myfav_t))
+    query = ("SELECT posts.user_id, posts.id, plants.name, posts.image, plants.desc FROM posts INNER JOIN plants ON posts.plant_id = plants.id WHERE plants.name IN {} AND posts.user_id != '{}'".format(myfav_t, user_id))
 
     cursor.execute(query)
     frame = cursor.fetchall()
     
     return frame
 
-myfav = get_user_fav(3)
-recommended = recommend_plant(myfav)
-result = get_posts(recommended)
 
-print(result)
+@app.post("/likes")
+async def likes(item: Item):
+    create_favorite(item.user_id, item.post_id)
+    myfav = get_user_fav(item.user_id, item.post_id)
+    recommended = recommend_plant(myfav)
+    result = get_posts(recommended, item.user_id)
+
+    return result
+
+@app.delete("/unlike")
+async def unlike(item: Item):
+    delete_favorite(item.user_id, item.post_id)
+    
+    return {
+        "message": "success"
+    }
+
+@app.get("/")
+def home():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    uvicorn.run(app, host='0.0.0.0', port=8000)
