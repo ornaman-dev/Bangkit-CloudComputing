@@ -3,6 +3,6 @@
 
 <b>Not yet</b> finished<br>
 TODO:
-- Implementing API
+- <s>Implementing API</s>
 - Deploy to Google Cloud
 - Recommend logic revision
