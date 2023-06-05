@@ -119,7 +119,7 @@ def get_user_fav(user_id, post_id):
 
 def get_posts(myfav, user_id):
     myfav_t = tuple(myfav)
-    query = ("SELECT posts.user_id, posts.id, plants.name, posts.image, plants.desc FROM posts INNER JOIN plants ON posts.plant_id = plants.id WHERE plants.name IN {} AND posts.user_id != '{}'".format(myfav_t, user_id))
+    query = ("SELECT posts.id, plants.name, posts.image, plants.desc FROM posts INNER JOIN plants ON posts.plant_id = plants.id WHERE plants.name IN {} AND posts.user_id != '{}'".format(myfav_t, user_id))
 
     cursor.execute(query)
     frame = cursor.fetchall()
