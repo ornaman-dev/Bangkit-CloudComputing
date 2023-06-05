@@ -1,8 +1,8 @@
 # Bangkit-CloudComputing
 ## API Plant Recommendation
 
-<b>Not yet</b> finished<br>
+Link: https://c23-ps369.as.r.appspot.com/
 TODO:
 - <s>Implementing API</s>
-- Deploy to Google Cloud
+- <s>Deploy to Google Cloud</s>
 - Recommend logic revision
