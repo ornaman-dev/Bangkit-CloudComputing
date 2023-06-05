@@ -12,8 +12,8 @@ TODO:
 ### Documentation
 | Method | Path | Parameter | Response |
 | :--- | :--- | :--- | :--- |
-| `POST` | /likes | user_id: `str`<br>post_id: `str` | [<br/>{ <br/> &emsp;"id" : `str`, <br/> &emsp;"name" : `string`, <br/> &emsp;"image" : `str` <br/> &emsp;"desc" : `string` <br/> },<br/>...<br/>] |
-| `DELETE` | /unlike | user_id: `str`<br>post_id: `str` | {<br/>&emsp;"message":"success"<br/>} |
+| `POST` | /likes | user_id: `str`<br>post_id: `str` | [<br/>{ <br/> &emsp;"id" : `str`, <br/> &emsp;"name" : `string`, <br/> &emsp;"image" : `str` <br/> &emsp;"desc" : `str` <br/> },<br/>...<br/>] |
+| `DELETE` | /unlike | user_id: `str`<br>post_id: `str` | {<br/>&emsp;"message": "success"<br/>} |
 
 ### Postman Example
 /likes
