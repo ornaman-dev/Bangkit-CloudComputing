@@ -19,4 +19,4 @@ TODO:
 /likes
 ![image](https://github.com/ornaman-dev/Bangkit-CloudComputing/assets/73805258/1a76c754-30c3-436c-a5bb-3186d8724ea1)
 /unlike
-![image](https://github.com/ornaman-dev/Bangkit-CloudComputing/assets/73805258/f123a8fb-6448-432a-9cbf-d58dcdc84d14)
+![image](https://github.com/ornaman-dev/Bangkit-CloudComputing/assets/73805258/0729c4aa-4268-4834-8146-ddc0c4bceb43)
