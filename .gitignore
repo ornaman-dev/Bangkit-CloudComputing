@@ -4,7 +4,6 @@
 credentials.json
 db_auth.json
 main_dump.py
-db.sql
 # ayitest
 requirements-dev.txt
 # Byte-compiled / optimized / DLL files
