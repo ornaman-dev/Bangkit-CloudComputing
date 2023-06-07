@@ -1,0 +1,5 @@
+runtime: python39
+service: default
+entrypoint: gunicorn -k uvicorn.workers.UvicornWorker main:app
+env: standard
+instance_class: F2

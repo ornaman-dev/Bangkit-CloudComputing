@@ -17,3 +17,7 @@
 __pycache__/
 # Ignored by the build system
 /setup.cfg
+
+# Ignore by user
+img/
+/credentials.json
