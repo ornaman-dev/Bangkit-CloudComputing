@@ -20,4 +20,4 @@ __pycache__/
 
 # Ignore by user
 img/
-/credentials.json
+db.sql
