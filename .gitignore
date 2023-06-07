@@ -2,6 +2,7 @@
 /img
 /model
 credentials.json
+db_auth.json
 main_dump.py
 # ayitest
 requirements-dev.txt
