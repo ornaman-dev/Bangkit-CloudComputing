@@ -106,7 +106,7 @@ def recommend_plant(user_favorites):
     return ranked_item_score['Plant'].values
 
 def get_user_fav(user_id):
-    query = (f"SELECT plants.name, plants.name_alt AS tanaman FROM users INNER JOIN favorite ON users.id = favorite.user_id INNER JOIN plants ON favorite.plant_id = plants.id WHERE users.id = '{user_id}';")
+    query = (f"SELECT plants.name_alt AS tanaman FROM users INNER JOIN favorite ON users.id = favorite.user_id INNER JOIN plants ON favorite.plant_id = plants.id WHERE users.id = '{user_id}';")
 
     cursor.execute(query)
     frame = cursor.fetchall()
@@ -117,9 +117,9 @@ def get_user_fav(user_id):
 
     return fav_plants
 
-def get_posts(recommendation):
+def get_plants(recommendation):
     recom_t = tuple(recommendation)
-    query = ("SELECT id, name_alt, image, plants.desc FROM plants WHERE name IN {}".format(recom_t))
+    query = ("SELECT id, name_alt, image, plants.desc FROM plants WHERE name_alt IN {}".format(recom_t))
 
     cursor.execute(query)
     frame = cursor.fetchall()
@@ -132,7 +132,7 @@ async def likes(item: Item):
     create_favorite(item.user_id, item.plant_id)
     myfav = get_user_fav(item.user_id)
     recommended = recommend_plant(myfav)
-    result = get_posts(recommended)
+    result = get_plants(recommended)
 
     return result
 
