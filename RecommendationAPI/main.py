@@ -11,7 +11,7 @@ from pydantic import BaseModel
 
 class Item(BaseModel):
     user_id: str
-    post_id: str
+    plant_id: str
 
 dbAuth = json.load(open('db_auth.json'))
 mydb = mysql.connector.connect(
@@ -24,15 +24,15 @@ cursor = mydb.cursor( dictionary=True )
 
 app = FastAPI()
 
-def create_favorite(user_id, post_id):
+def create_favorite(user_id, plant_id):
     fav_id = 'fav-' + str(uuid.uuid4())[:6]
-    query = (f"INSERT INTO `favorite` VALUES ('{fav_id}', '{user_id}', '{post_id}');")
+    query = (f"INSERT INTO `favorite` VALUES ('{fav_id}', '{user_id}', '{plant_id}');")
 
     cursor.execute(query)
     mydb.commit()
 
-def delete_favorite(user_id, post_id):
-    query = (f"DELETE FROM favorite WHERE user_id = '{user_id}' AND post_id = '{post_id}';")
+def delete_favorite(user_id, plant_id):
+    query = (f"DELETE FROM favorite WHERE user_id = '{user_id}' AND plant_id = '{plant_id}';")
 
     cursor.execute(query)
     mydb.commit()
@@ -105,8 +105,8 @@ def recommend_plant(user_favorites):
     
     return ranked_item_score['Plant'].values
 
-def get_user_fav(user_id, post_id):
-    query = (f"SELECT plants.name AS tanaman FROM posts INNER JOIN plants ON plants.id = posts.plant_id INNER JOIN favorite ON favorite.post_id = posts.id INNER JOIN users ON favorite.user_id = users.id WHERE users.id = '{user_id}' OR posts.id = '{post_id}';")
+def get_user_fav(user_id):
+    query = (f"SELECT plants.name, plants.name_alt AS tanaman FROM users INNER JOIN favorite ON users.id = favorite.user_id INNER JOIN plants ON favorite.plant_id = plants.id WHERE users.id = '{user_id}';")
 
     cursor.execute(query)
     frame = cursor.fetchall()
@@ -117,9 +117,9 @@ def get_user_fav(user_id, post_id):
 
     return fav_plants
 
-def get_posts(myfav, user_id):
-    myfav_t = tuple(myfav)
-    query = ("SELECT posts.id, plants.name, posts.image, plants.desc FROM posts INNER JOIN plants ON posts.plant_id = plants.id WHERE plants.name IN {} AND posts.user_id != '{}'".format(myfav_t, user_id))
+def get_posts(recommendation):
+    recom_t = tuple(recommendation)
+    query = ("SELECT id, name_alt, image, plants.desc FROM plants WHERE name IN {}".format(recom_t))
 
     cursor.execute(query)
     frame = cursor.fetchall()
@@ -129,16 +129,16 @@ def get_posts(myfav, user_id):
 
 @app.post("/likes")
 async def likes(item: Item):
-    create_favorite(item.user_id, item.post_id)
-    myfav = get_user_fav(item.user_id, item.post_id)
+    create_favorite(item.user_id, item.plant_id)
+    myfav = get_user_fav(item.user_id)
     recommended = recommend_plant(myfav)
-    result = get_posts(recommended, item.user_id)
+    result = get_posts(recommended)
 
     return result
 
 @app.delete("/unlike")
 async def unlike(item: Item):
-    delete_favorite(item.user_id, item.post_id)
+    delete_favorite(item.user_id, item.plant_id)
     
     return {
         "message": "success"
@@ -147,6 +147,24 @@ async def unlike(item: Item):
 @app.get("/")
 def home():
     return "Hello World!"
+
+@app.get("/plants")
+def plants():
+    query = ("SELECT id, name, name_alt, image, plants.desc FROM plants ORDER BY name_alt;")
+    
+    cursor.execute(query)
+    frame = cursor.fetchall()
+    
+    return frame
+
+@app.get("/plant")
+def plant(id: str):
+    query = ("SELECT * FROM plants WHERE id = '{}';".format(id))
+    
+    cursor.execute(query)
+    frame = cursor.fetchall()
+    
+    return frame
 
 if __name__ == "__main__":
     uvicorn.run(app, host='0.0.0.0', port=8000)

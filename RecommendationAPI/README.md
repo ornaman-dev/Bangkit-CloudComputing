@@ -2,11 +2,6 @@
 ## API Plant Recommendation
 
 <br>
-TODO:
-- <s>Implementing API</s>
-- <s>Deploy to Google Cloud</s>
-- Recommend logic revision
-- Fix bug
 
 ### Documentation
 | Method | Path | Parameter | Response |

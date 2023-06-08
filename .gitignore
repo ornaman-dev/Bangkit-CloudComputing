@@ -1,7 +1,6 @@
 # rosyanignore
 /img
 db.sql
-ornaman.sql
 credentials.json
 db_auth.json
 main_dump.py
