@@ -148,5 +148,23 @@ async def unlike(item: Item):
 def home():
     return "Hello World!"
 
+@app.get("/plants")
+def plants():
+    query = ("SELECT id, name, name_alt, image, plants.desc FROM plants ORDER BY name_alt;")
+    
+    cursor.execute(query)
+    frame = cursor.fetchall()
+    
+    return frame
+
+@app.get("/plant")
+def plant(id: str):
+    query = ("SELECT * FROM plants WHERE id = '{}';".format(id))
+    
+    cursor.execute(query)
+    frame = cursor.fetchall()
+    
+    return frame[0]
+
 if __name__ == "__main__":
     uvicorn.run(app, host='0.0.0.0', port=8000)
