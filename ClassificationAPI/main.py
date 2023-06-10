@@ -53,7 +53,7 @@ def upload_image(data):
     client = storage.Client()
     file = os.path.splitext(data.filename)
     
-    bucket = client.get_bucket('plant-classification-images')
+    bucket = client.get_bucket('ornaman-plant-images')
 
     img_type = data.filename.split(".")[-1]
     if(img_type == 'jpg'):
@@ -115,12 +115,10 @@ async def predict(
 
     class_name = CLASS_NAMES[predicted_idx]
     class_desc = CLASS_DESC[predicted_idx]
-    confidence = np.max(predictions[0])
 
     return {
         'class': class_name,
         'description': class_desc,
-        'confidence': float(confidence),
         'image': img_url
     }
 
