@@ -104,11 +104,15 @@ async def predict(
 
         if (np.max(predict_list) < 0.8):
             return {
-                "message": "Bukan tanaman yang kita punya"
+                'class': "Bukan tanaman milik Ornaman.",
+                'description': "Gambar yang diberikan tidak termasuk ke dalam tanaman milik Ornaman. Pilih tanaman yang lain dan coba lagi.",
+                'image': img_url
             }
     except:
         return {
-            "detail": "There was an error when load the image"
+            'class': "Terjadi kesalahan saat memuat gambar.",
+            'description': "Kegagalan dalam memuat sebuah gambar yang diharapkan atau kesalahan saat pengguna mencoba memuat atau menampilkan gambar dari sumber tertentu.",
+            'image': img_url
         }
     
     predicted_idx = np.argmax(predictions[0])
