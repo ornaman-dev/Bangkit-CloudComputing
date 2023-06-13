@@ -44,10 +44,6 @@ CLASS_DESC = [
     'Suplir adalah tanaman pakis yang memiliki daun halus dan indah. Tanaman ini tumbuh hingga ketinggian sekitar 30-60 cm dan memiliki daun hijau muda hingga hijau tua yang lembut dan berkilau. Suplir biasanya digunakan sebagai tanaman hias dalam ruangan atau di taman teduh. Tanaman ini membutuhkan cahaya terfilter dan tanah yang lembab dengan drainase yang baik. Suplir adalah tanaman yang menarik secara visual dan juga dapat membantu memperbaiki kualitas udara di sekitarnya.'
 ]
 
-@app.get("/ping")
-async def ping():
-    return "The server is running."
-
 def upload_image(data):
     os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'credentials.json'
     client = storage.Client()
@@ -96,7 +92,9 @@ async def predict(
 
         if(pred_index == 0):
             return {
-                "message": "Gambar bukan tanaman hias"
+                "class": "Gambar bukan tanaman hias",
+                'description': "Gambar yang diberikan tidak termasuk ke dalam tanaman hias. Pilih gambar yang lain dan coba lagi.",
+                'image': img_url
             }
         
         predictions = MODEL.predict(img)
@@ -128,7 +126,7 @@ async def predict(
 
 @app.get("/")
 def home():
-    return "Hello World! This belongs to the route path of Classification API by Ornaman Team."
+    return "Hello World! This belongs to the root path of Classification API by Ornaman Team."
 
 if __name__ == "__main__":
     uvicorn.run(app, host='0.0.0.0', port=8000)

@@ -4,7 +4,6 @@
 ### Documentation
 | Method | Path | Parameter | Response |
 | :--- | :--- | :--- | :--- |
-| `GET` | /ping | none | "The server is running." |
 | `POST` | /predict | file: `file` | { <br/> &emsp;"class" : `string`, <br/> &emsp;"description" : `string`, <br/> &emsp;"image" : `string` <br/> } |
 
 ### Postman Example
