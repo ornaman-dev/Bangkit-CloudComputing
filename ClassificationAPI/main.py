@@ -96,7 +96,9 @@ async def predict(
 
         if(pred_index == 0):
             return {
-                "message": "Gambar bukan tanaman hias"
+                "class": "Gambar bukan tanaman hias",
+                'description': "Gambar yang diberikan tidak termasuk ke dalam tanaman hias. Pilih gambar yang lain dan coba lagi.",
+                'image': img_url
             }
         
         predictions = MODEL.predict(img)
@@ -128,7 +130,7 @@ async def predict(
 
 @app.get("/")
 def home():
-    return "Hello World! This belongs to the route path of Classification API by Ornaman Team."
+    return "Hello World! This belongs to the root path of Classification API by Ornaman Team."
 
 if __name__ == "__main__":
     uvicorn.run(app, host='0.0.0.0', port=8000)
