@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "09e293ea-8b09-4921-b0a7-2dc93e9c4004",
+		"name": "Ornaman APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26528978"
+	},
+	"item": [
+		{
+			"name": "Classification API",
+			"item": [
+				{
+					"name": "Image Classification",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Asus-GK/Desktop/bangk!t/Projects/Bangkit-CloudComputing/img/612f02530767a.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://classification-api-j52mutq7uq-as.a.run.app/predict",
+							"protocol": "https",
+							"host": [
+								"classification-api-j52mutq7uq-as",
+								"a",
+								"run",
+								"app"
+							],
+							"path": [
+								"predict"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Recommendation API",
+			"item": [
+				{
+					"name": "Dislike a Plant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": \"user-576820\",\r\n    \"plant_id\": \"plant-5ee69c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://c23-ps369.as.r.appspot.com/unlike",
+							"protocol": "https",
+							"host": [
+								"c23-ps369",
+								"as",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"unlike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Likes a Plant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": \"user-576820\",\r\n    \"plant_id\": \"plant-5ee69c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://c23-ps369.as.r.appspot.com/likes",
+							"protocol": "https",
+							"host": [
+								"c23-ps369",
+								"as",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Plants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://c23-ps369.as.r.appspot.com/plants",
+							"protocol": "https",
+							"host": [
+								"c23-ps369",
+								"as",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"plants"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Detail Plant",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://c23-ps369.as.r.appspot.com/plant?id=plant-5ee69c",
+							"protocol": "https",
+							"host": [
+								"c23-ps369",
+								"as",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"plant"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "plant-5ee69c"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication API",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"test\",\r\n  \"email\": \"test@gmail.com\",\r\n  \"password\": \"123abc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://backend-dot-c23-ps369.as.r.appspot.com/users/",
+							"protocol": "https",
+							"host": [
+								"backend-dot-c23-ps369",
+								"as",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "test@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123abc",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://backend-dot-c23-ps369.as.r.appspot.com/login/token",
+							"protocol": "https",
+							"host": [
+								"backend-dot-c23-ps369",
+								"as",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"login",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Current User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend-dot-c23-ps369.as.r.appspot.com/users/me",
+							"protocol": "https",
+							"host": [
+								"backend-dot-c23-ps369",
+								"as",
+								"r",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
