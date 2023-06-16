@@ -146,7 +146,7 @@ async def unlike(item: Item):
 
 @app.get("/")
 def home():
-    return "Hello World!"
+    return "Hello World! This belongs to the root path of Recommendation API by Ornaman Team."
 
 @app.get("/plants")
 def plants():
