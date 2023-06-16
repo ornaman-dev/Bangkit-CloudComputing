@@ -49,7 +49,8 @@ def upload_image(data):
     client = storage.Client()
     file = os.path.splitext(data.filename)
     
-    bucket = client.get_bucket('ornaman-plant-images')
+    BUCKET_NAME = 'ornaman-plant-images' # change your cloud bucket name here
+    bucket = client.get_bucket(BUCKET_NAME)
 
     img_type = data.filename.split(".")[-1]
     if(img_type == 'jpg'):
