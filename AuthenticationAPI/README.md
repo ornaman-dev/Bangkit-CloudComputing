@@ -1,40 +1,70 @@
-# Ornaman Backend
-> Just Another Ornaman Web Service (Backend)
+# User Authentication API
+## API Documentation
+### Endpoint
+<i>web preview</i>
+> https://backend-dot-c23-ps369.as.r.appspot.com/
+### User Register
+- Path
+  + /users
+- Method
+  + POST
+- Request Body
+  ```json
+  {
+    "name": "str",
+    "email": "str",
+    "password": "str"
+  }
+  ```
+- Response
+  ```json
+  {
+    "id": "str",
+    "name": "str",
+    "email": "str"
+  }
+  ```
+- Postman Example
+  ![image](https://github.com/ornaman-dev/Bangkit-CloudComputing/assets/73805258/6b2bbf9d-9880-4396-b0be-2ce897fa67b7)
 
-Please feel free to [submit issues](https://github.com/ornaman-dev/Bangkit-CloudComputing-Backend/issues/new) if you find bugs, want to add features, or anything else related to Ornaman Web Service (Backend).
+### User Login
+- Path
+  + /login/token
+- Method
+  + POST
+- Request Body
+  + `username`
+  + `password`
+  + `grant_type`
+  + `scope`
+  + `client_id`
+  + `client_secret`
+- Response
+  ```json
+  {
+    "id": "str",
+    "name": "str",
+    "email": "str",
+    "access_token": "str",
+    "token_type": "str"
+  }
+  ```
+- Postman Example
+  ![https___backend-dot-c23-ps369 as r appspot com_login_token - My Workspace 6_16_2023 8_17_00 PM](https://github.com/ornaman-dev/Bangkit-CloudComputing/assets/73805258/cc45100f-061e-472b-8fe1-991772781e48)
 
-## Capstone Project by C23-PS369
-[Ornaman](https://ornaman.com/) by C23-PS369 Bangkit Academy 2023
+### Read Current User
+- Path
+  + /users/me
+- Method
+  + GET
+- Response
+  ```json
+  {
+    "id": "str",
+    "name": "str",
+    "email": "str"
+  }
+  ```
+- Postman Example
+  ![https___backend-dot-c23-ps369 as r appspot com_users_me - My Workspace 6_16_2023 8_18_51 PM](https://github.com/ornaman-dev/Bangkit-CloudComputing/assets/73805258/e108ad1d-ed75-4394-8540-36bb895c5a78)
 
-
-![](backend/static/images/lite.gif)
-
-## Technology Stack:
-* FastAPI [Check Here](https://fastapi.tiangolo.com/tutorial/sql-databases/)
-* Uvicorn (server) [Check Here](https://www.uvicorn.org/)
-* Pytest [Check Here](https://docs.pytest.org/en/7.3.x/index.html)
-* Sqlalchemy [Check Here](https://www.sqlalchemy.org/)
-* [SQLite ](https://www.sqlite.org/index.html) or [PostgreSQL](https://www.postgresql.org/)
-
-
-## How to start the app ?
-```
-git clone https://github.com/ornaman-dev/Bangkit-CloudComputing-Backend.git
-cd .\Bangkit-CloudComputing-Backend\
-python -m venv env   #create a virtual environment
-.\env\Scripts\activate  #activate virtual environment
-cd .\backend\
-pip install -r .\requirements.txt
-uvicorn main:app --reload     #start server
-visit  127.0.0.1:8000/
-```
-
-## TODO
-- [ ] Keep updating until the capstone period is over
-- [x] Connect to GCP Cloud SQL Instances
-- [x] Deploy to Cloud
-- [ ] Acquisition and integration with other Ornaman Rest API, such as [Classification API](https://github.com/ornaman-dev/Bangkit-CloudComputing/tree/main/ClassificationAPI) and [Recommendation API](https://github.com/ornaman-dev/Bangkit-CloudComputing/tree/main/RecommendationAPI)
-- [ ] Create a comprehensive Documentation
-
-## Live Preview & Test
-[Click Here](https://ornamanbackend-1-j5052767.deta.app/) for Preview & Test | Powered by: [Deta Space Builder](https://deta.space/)
