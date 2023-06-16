@@ -1,8 +1,7 @@
 # User Authentication API
 ## API Documentation
 ### Endpoint
-<i>web preview</i>
-> https://backend-dot-c23-ps369.as.r.appspot.com/
+> https://backend-dot-c23-ps369.as.r.appspot.com/ <I>(include web preview)</I>
 ### User Register
 - Path
   + /users
