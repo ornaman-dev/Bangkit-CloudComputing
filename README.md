@@ -56,5 +56,5 @@
 ```bash
   gcloud run deploy --source .
 ```
-- Select your region the same as your bucket.
-- Wait until it finish.
+- Type `classification-api` as the service name and select your region the same as your bucket.
+- Wait until it finishes.
