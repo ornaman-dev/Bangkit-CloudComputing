@@ -4,6 +4,8 @@ db.sql
 credentials.json
 db_auth.json
 main_dump.py
+.coveragerc
+.envgcp
 # ayitest
 requirements-dev.txt
 # Byte-compiled / optimized / DLL files

@@ -1,0 +1,43 @@
+{% extends "shared/base.html" %}
+
+
+{% block title %}
+  <title>Submit a Favorite Ornamental Plant Post</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="text-danger font-weight-bold">
+        {% for error in errors %}
+          <li>{{error}}</li>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="row my-5">
+      <h3 class="text-center display-4">Submit a Favorite Ornamental Plant Post</h3>
+      <form method="POST">
+        <div class="mb-3">
+          <input type="text" required class="form-control" name="class_name" value="{{class_name}}" placeholder="Name Here">
+        </div>
+        <div class="mb-3">
+          <input type="text" required placeholder="Family Name e.g. Araceae" name="family_name" value="{{family_name}}" class="form-control">
+        </div>
+        <div class="mb-3">
+          <input type="text" required placeholder="Taxonimic Data e.g. https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:2671-1" name="taxonomic_data_url" value="{{taxonomic_data_url}}" class="form-control">
+        </div>
+        <div class="mb-3">
+          <input type="text" required placeholder="Plant location" name="location" value="{{location}}" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+          <textarea class="form-control" required name="description" id="exampleFormControlTextarea1" rows="3">{{description}}</textarea>
+          <div id="help" class="form-text">Please provide complete Ornamental Plant description.</div>
+
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+  {% endblock %}

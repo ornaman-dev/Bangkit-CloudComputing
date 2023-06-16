@@ -1,0 +1,29 @@
+{% extends "shared/base.html" %}
+
+{% block title %}
+<title>Ornaman Backend Service</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+      <h3 class="display-6">
+        Hello
+        <small class="text-body-secondary text-success">Ornaman</small>
+      </h3>
+  <div class="row">
+    {% for plant in plants %}
+      <div class="col-lg-4 col-md-3 col-sm-10 mr-auto">
+        {% with obj=plant %}
+          {% include "components/card.html" %}
+        {% endwith %}
+
+        {% if loop.index %3 %}
+          </div>
+        {% else %}
+          </div></div><br><div class="row">
+        {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

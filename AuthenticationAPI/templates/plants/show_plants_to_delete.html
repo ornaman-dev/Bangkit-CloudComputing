@@ -1,0 +1,57 @@
+{% extends "shared/base.html" %}
+
+
+{% block title %}
+  <title>Delete My Favorite Ornamental Plants</title>
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="display-5 text-center text-danger mb-3">Delete My Favorite Ornamental Plants</h1>
+    </div>
+    <div id="result" class="text-danger text-bold lead"></div>
+  </div>
+
+  <div class="row">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Num</th>
+            <th scope="col">Name</th>
+            <th scope="col">Family Name</th>
+            <th scope="col">Taxonimic Data</th>
+            <th scope="col">Location</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for plant in plants %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{plant.class_name}}</td>
+                <td>{{plant.family_name}}</td>
+                <td>{{plant.taxonomic_data_url}}</td>
+                <td>{{plant.location}}</td>
+                <td><button class="btn btn-danger btn-sm" onclick="delete_plant({{plant.plant_id}})">Delete</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    function delete_plant(plant_id){
+        fetch('/plants/delete/'+plant_id,{
+            method:'DELETE',
+        })
+        .then(response => response.json())
+        .then(document.getElementById('result').innerHTML = "Refreshing")
+        .then(data => document.getElementById("result").innerHTML = data.detail);
+    }
+</script>
+{% endblock %}

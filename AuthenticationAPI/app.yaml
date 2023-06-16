@@ -1,0 +1,7 @@
+runtime: python39
+service: backend
+entrypoint: gunicorn -k uvicorn.workers.UvicornWorker main:app
+env: standard
+instance_class: F2
+vpc_access_connector:
+  name: projects/c23-ps369/locations/asia-southeast1/connectors/sql-connect

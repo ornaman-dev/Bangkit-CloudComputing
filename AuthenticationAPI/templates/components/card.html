@@ -1,0 +1,10 @@
+<div class="card" style="width: 18rem;">
+  <img src="{{obj.image}}" class="card-img-top" alt="{{obj.name_alt}}">
+    <div class="card-body">
+      <h5 class="card-title">{{obj.name}}</h5>
+      <p class="card-text">Family Name : {{obj.name_alt}}</p>
+      <p class="card-text">Taxonimic Data: {{obj.toxicity[:25]}}</p>
+      <p class="card-text">Description: {{obj.desc[:60]}}</p>
+      <a href="/detail/{{obj.id}}" class="btn btn-success">Read More</a>
+    </div>
+  </div>

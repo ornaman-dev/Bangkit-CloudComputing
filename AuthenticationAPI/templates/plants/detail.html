@@ -1,0 +1,73 @@
+{% extends "shared/base.html" %}
+
+{% block title %}
+  <title>{{plant.class_name}} - Ornaman</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+      <h1 class="display-4 text-danger">{{plant.name_alt}}</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row">ID:</th>
+            <td>{{plant.id}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Name:</th>
+            <td>{{plant.name}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Family Name:</th>
+            <td>{{plant.name_alt}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Common Name:</th>
+            <td>{{plant.name}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Description:</th>
+            <td>{{plant.desc}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Light:</th>
+            <td>{{plant.light}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Water:</th>
+            <td>{{plant.water}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Humidity:</th>
+            <td>{{plant.humidity}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Temperature:</th>
+            <td>{{plant.temperature}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Food:</th>
+            <td>{{plant.food}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Toxicity:</th>
+            <td>{{plant.toxicity}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Cares:</th>
+            <td>{{plant.cares}}</td>
+          </tr>
+          <tr>
+            <th scope="row">Fact:</th>
+            <td>{{plant.fact}}</td>
+          </tr>
+          <!-- <tr>
+            <th scope="row">Rec ID:</th>
+            <td>{{plant.rec_id}}</td>
+          </tr> -->
+        </tbody>
+      </table>
+
+</div>
+
+{% endblock %}

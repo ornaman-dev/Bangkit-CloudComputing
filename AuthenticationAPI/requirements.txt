@@ -1,0 +1,49 @@
+fastapi
+uvicorn
+gunicorn
+mysqlclient
+
+# for template
+jinja2
+
+# for static files
+aiofiles
+
+# for database
+sqlalchemy
+# psycopg2
+psycopg2-binary # solve space push builder psycopg2 error
+
+# for loading environment variables
+python-dotenv
+
+# for email validation
+pydantic[email]
+
+# hashing
+passlib[bcrypt]
+
+# for testing
+pytest
+requests
+httpx
+pytest-cov
+
+# for  cleaning up codebase on each commit
+pre-commit
+
+# seedir to print tree structure of folders
+seedir
+
+# for jwt tokens
+python-jose
+
+# for accessing form data
+python-multipart
+
+# GCP test
+pg8000==1.29.4
+cloud-sql-python-connector==1.2.3
+
+# for database migration
+# alembic
