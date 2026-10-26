@@ -42,7 +42,7 @@ python-jose
 python-multipart
 
 # GCP test
-pg8000==1.29.4
+pg8000==1.31.5
 cloud-sql-python-connector==1.2.3
 
 # for database migration
